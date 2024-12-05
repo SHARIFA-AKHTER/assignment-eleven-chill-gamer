@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ReviewsCard = ({ review }) => {
@@ -49,7 +50,9 @@ const ReviewsCard = ({ review }) => {
              
                 <div className="card-actions justify-end">
                 <div className="join join-vertical space-y-4">
+                 <Link to={`/update-review/${review._id}`}>
                  <button className="btn ">Update button</button>
+                 </Link>
                  <button 
                  onClick={() => handleDelete(review._id)}
                  className="btn bg-red-500">X</button>

@@ -54,17 +54,13 @@ const AddReview = () => {
             if(data.insertedId){
               Swal.fire({
                 title: 'success',
-                text: 'User Added Successfully',
+                text: 'Review Added Successfully',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
             }
           })
           
-         
-            // Replace this with your database logic
-            // console.log("Submitted Data:", formData);
-            // toast.success("Review added successfully!");
             // navigate("/reviews"); 
         } 
            catch (error) {

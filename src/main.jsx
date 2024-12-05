@@ -13,6 +13,7 @@ import MyReviews from './components/MyReviews.jsx';
 import GameWatchlist from './components/GameWatchlist.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import UpdateReview from './components/UpdateReview.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
       {
         path:"/add-review",
         element:<AddReview></AddReview>
+      },
+      {
+        path:"/update-review/:id",
+        element:<UpdateReview></UpdateReview>,
+        loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`),
+        
       },
       {
         path:"/my-reviews",
