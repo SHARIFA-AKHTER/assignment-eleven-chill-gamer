@@ -1,71 +1,70 @@
-// import React from 'react';
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-// const ReviewDetails = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
 
-// export default ReviewDetails;
+const ReviewDetails = ({ review }) => {
 
-// import { useContext, useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { AuthContext } from "../contexts/AuthContext";
-// import { toast } from "react-toastify";
+    const handleDelete = _id =>{
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+           
 
-// const ReviewDetails = () => {
-//   const { id } = useParams();
-//   const { user } = useContext(AuthContext);
-//   const [review, setReview] = useState(null);
+                fetch(`http://localhost:5000/reviews/${_id}`,{
+                    method:'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if(data.deletedCount > 0){
+                           Swal.fire({
+                             title: "Deleted!",
+                             text: "Your Review has been deleted.",
+                             icon: "success"
+                           });
+                    }
+                })
+            }
+          });
+    }
+    return (
+        <div>
+              <div className="card card-side bg-base-100 shadow-xl">
+            <figure>
+                <img src={review.gameCover} alt="Game Cover" />
+            </figure>
+            <div className="flex justify-between w-full pr-4">
+               <div>
+               <h2 className="card-title">{review.gameTitle}</h2>
+                   <p>{review.reviewDescription}</p>
+                    <span>Rating: {review.rating}/10</span>
+                    <span>Genre: {review.genre}</span>
+                    <span>Published: {review.publishingYear}</span>
+               </div>
+             
+                <div className="card-actions justify-end">
+                <div className="join join-vertical space-y-4">
+                 <Link to={`/update-review/${review._id}`}>
+                 <button className="btn ">Update button</button>
+                 </Link>
+                 <button 
+                 onClick={() => handleDelete(review._id)}
+                 className="btn bg-red-500">X</button>
+                
+                 </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    );
+};
 
-//   useEffect(() => {
-//     fetch(`http://localhost:5000/reviews/${id}`)
-//       .then((res) => res.json())
-//       .then((data) => setReview(data))
-//       .catch(() => toast.error("Failed to fetch review details"));
-//   }, [id]);
-
-//   const handleAddToWatchlist = () => {
-//     if (user) {
-//       const watchlistItem = {
-//         ...review,
-//         userEmail: user.email,
-//         userName: user.displayName,
-//       };
-//       fetch("http://localhost:5000/watchlist", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(watchlistItem),
-//       })
-//         .then(() => toast.success("Added to Watchlist!"))
-//         .catch(() => toast.error("Failed to add to Watchlist"));
-//     } else {
-//       toast.error("Please log in to add to Watchlist");
-//     }
-//   };
-
-//   if (!review) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div className="max-w-4xl mx-auto p-8 bg-gray-100 rounded-lg shadow-md">
-//       <img src={review.gameCover} alt={review.gameTitle} className="mb-6" />
-//       <h2 className="text-3xl font-bold">{review.gameTitle}</h2>
-//       <p className="text-gray-600 mb-4">{review.reviewDescription}</p>
-//       <p className="mb-4">Rating: {review.rating}</p>
-//       <p className="mb-4">Genre: {review.genre}</p>
-//       <p className="mb-4">Reviewer: {review.userName} ({review.userEmail})</p>
-//       <button
-//         onClick={handleAddToWatchlist}
-//         className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
-//       >
-//         Add to Watchlist
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default ReviewDetails;
+export default ReviewDetails;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import ReviewsCard from './ReviewsCard';
+import ReviewDetails from './ReviewDetails';
 
 const Home = () => {
     const reviews = useLoaderData();
@@ -11,10 +11,10 @@ const Home = () => {
             </h2>
            <div className='grid md:grid-cols-2 gap-4'>
            {
-              reviews.map(review =><ReviewsCard
+              reviews.map(review =><ReviewDetails
               key={review._id}
               review ={review}
-              ></ReviewsCard>)  
+              ></ReviewDetails>)  
             }
            </div>
         </div>
