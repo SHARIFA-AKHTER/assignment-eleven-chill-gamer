@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ReviewDetails from './ReviewDetails';
 
 const Home = () => {
-    const reviews = useLoaderData();
+    const loadedReviews = useLoaderData();
+    const [reviews,setReviews] =useState(loadedReviews);
+
     return (
         <div className='m-20'>
             <h2 className='flex justify-center mx-auto my-20'>
@@ -14,6 +16,8 @@ const Home = () => {
               reviews.map(review =><ReviewDetails
               key={review._id}
               review ={review}
+              reviews ={reviews}
+              setReviews ={setReviews}
               ></ReviewDetails>)  
             }
            </div>

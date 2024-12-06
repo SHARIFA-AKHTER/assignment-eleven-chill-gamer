@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const ReviewDetails = ({ review }) => {
+const ReviewDetails = ({ review,reviews, setReviews }) => {
 
     const handleDelete = _id =>{
         console.log(_id);
@@ -30,7 +30,9 @@ const ReviewDetails = ({ review }) => {
                              text: "Your Review has been deleted.",
                              icon: "success"
                            });
-                    }
+                           const remaining = reviews.filter(rev =>rev._id !== _id)
+                           setReviews(remaining)
+                    };
                 })
             }
           });

@@ -14,6 +14,7 @@ import GameWatchlist from './components/GameWatchlist.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import UpdateReview from './components/UpdateReview.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,8 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+   <AuthProvider>
+      <RouterProvider router={router} />
+   </AuthProvider>
   </StrictMode>,
 )
