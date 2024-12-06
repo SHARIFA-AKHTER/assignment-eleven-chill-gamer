@@ -88,25 +88,10 @@ const UpdateReview = () => {
 }
     return (
         <div className="max-w-4xl mx-auto p-24 shadow-lg rounded-lg bg-[#F4F3F0]">
-        <h2 className="text-3xl font-extrabold text-gray-600">Update Review:{review.gameTitle}</h2>
+        <h2 className="text-3xl font-extrabold text-gray-600  mb-6">Update Review</h2>
         <form onSubmit={handleUpdate}>
-            {/* Game Cover Image */}
            <div className="md:flex gap-4">
-           <div className="mb-4 md:w-1/2">
-            <label className="block text-gray-600 mb-2">Game Cover Image URL</label>
-            <input
-              type="url"
-              name="gameCover"
-               defaultValue={formData.gameCover}
-               onChange={handleChange}
-              className="w-full px-4 py-2 border
-               rounded-md focus:outline-none focus:ring
-                focus:ring-blue-300"
-              placeholder="Enter image URL"
-            />
-          </div>
-
-               {/* Game Title */}
+            {/* Game Title */}
             <div className="mb-4 md:w-1/2">
                 <label className="block text-gray-600 mb-2">Game Title</label>
                 <input type="text"
@@ -118,13 +103,10 @@ const UpdateReview = () => {
                   focus:ring-blue-300"
                    placeholder="Enter game title"
                  />
-
             </div>
-           </div>
 
-             {/* Review Description */}
-    <div className="md:flex gap-4">        
-    <div className="mb-4 md:w-1/2">
+            {/* Description */}
+      <div className="mb-4 md:w-1/2">
       <label className="block text-gray-600 mb-2">Review Description</label>
       <textarea
         name="reviewDescription"
@@ -135,9 +117,12 @@ const UpdateReview = () => {
         rows="4"
         placeholder="Write your review here"
       ></textarea>
-    </div>
+    </div>   
+     </div>
 
-    {/* Rating */} 
+
+    {/* Rating */}
+    <div className="md:flex gap-4">
     <div className="mb-4 md:w-1/2">
       <label className="block text-gray-600 mb-2">Rating (1-10)</label>
       <input
@@ -149,22 +134,6 @@ const UpdateReview = () => {
          rounded-md focus:outline-none focus:ring focus:ring-blue-300"
         min="1"
         max="10"
-      />
-    </div>
-   </div>
-
-    {/* Publishing Year */}
-    <div className="md:flex gap-4">
-    <div className="mb-4 md:w-1/2">
-      <label className="block text-gray-600 mb-2">Publishing Year</label>
-      <input
-        type="number"
-        name="publishingYear"
-        value={formData.publishingYear}
-        onChange={handleChange}
-        className="w-full px-4 py-2 border rounded-md 
-        focus:outline-none focus:ring focus:ring-blue-300"
-        placeholder="e.g., 2024"
       />
     </div>
 
@@ -223,7 +192,7 @@ const UpdateReview = () => {
     </button>
         </form>
     </div>
-    );
+    ); 
 };
 
 export default UpdateReview;
