@@ -39,27 +39,37 @@ const ReviewDetails = ({ review,reviews, setReviews }) => {
     }
     return (
         <div>
-              <div className="card card-side bg-base-100 shadow-xl">
-            <figure>
-                <img src={review.gameCover} alt="Game Cover" />
+              <div className="card card-side bg-white shadow-xl
+               rounded-lg overflow-hidden border border-gray-200">
+            <figure className="w-40 h-40">
+                <img src={review.gameCover} 
+                alt="Game Cover" 
+                 className="object-cover w-full h-full"
+                />
             </figure>
-            <div className="flex justify-between w-full pr-4">
+            <div className="flex flex-col justify-between w-full p-4">
                <div>
-               <h2 className="card-title">{review.gameTitle}</h2>
-                   <p>{review.reviewDescription}</p>
-                    <span>Rating: {review.rating}/10</span>
-                    <span>Genre: {review.genre}</span>
-                    <span>Published: {review.publishingYear}</span>
+               <h2 className="card-title text-xl font-bold text-gray-800">{review.gameTitle}</h2>
+                   <p className="text-sm text-gray-600 mt-2">{review.reviewDescription}</p>
+                    <span  className="block text-sm text-gray-700">Rating: {review.rating}/10</span>
+                    <span className="block text-sm text-gray-700">Genre: {review.genre}</span>
+                    <span  className="block text-sm text-gray-700">Published: {review.publishingYear}</span>
                </div>
              
-                <div className="card-actions justify-end">
-                <div className="join join-vertical space-y-4">
+                <div className="card-actions mt-4 flex justify-end">
+                <div className="flex flex-col space-y-2">
                  <Link to={`/update-review/${review._id}`}>
-                 <button className="btn ">Update button</button>
+                 <button className="btn btn-primary text-white 
+                 font-semibold px-4 py-2 rounded-lg
+                  hover:bg-blue-600 ">
+                    Update button
+                    </button>
                  </Link>
                  <button 
                  onClick={() => handleDelete(review._id)}
-                 className="btn bg-red-500">X</button>
+                 className="btn text-white font-semibold 
+                 px-4 py-2 rounded-lg hover:bg-red-600
+                  bg-red-500">X</button>
                 
                  </div>
                 </div>
