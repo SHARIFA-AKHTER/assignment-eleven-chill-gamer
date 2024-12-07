@@ -1,8 +1,9 @@
+import React from 'react';
 
 const GameWatchlist = () => {
     return (
         <div>
-            <h2>Watchlist is very nice</h2>
+            Watchlist
         </div>
     );
 };

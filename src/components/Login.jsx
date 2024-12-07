@@ -64,12 +64,12 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login Now</button>
               </div>
-              {/* <div className="mt-4 text-sm">
+               <div className="mt-4 text-sm">
                 Already have an account?{" "}
-                <a href="/login" className="link link-hover text-primary">
-                  Login here
+                <a href="/register" className="link link-hover text-primary">
+                  Register here
                 </a>
-              </div> */}
+              </div> 
             </form>
           </div>
         </div>

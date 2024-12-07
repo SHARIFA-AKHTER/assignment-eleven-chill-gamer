@@ -80,7 +80,7 @@ const UpdateReview = () => {
         }
       })
       
-        //  navigate("/reviews"); 
+        navigate("/reviews"); 
     } 
      catch (error) {
         Swal.fire("Error", "Failed to update the review. Try again.", "error");

@@ -2,8 +2,9 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { createContext, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 
+
 export const AuthContext =createContext(null)
-const AuthProvider = ({children}) => {
+const AuthProvider = ({children, isAuthenticated}) => {
     const [user, setUser] =useState(null);
     const [loading,setLoading] = useState(true);
 
@@ -17,7 +18,7 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-
+    
     const userInfo = {
        user, 
        loading,

@@ -14,7 +14,7 @@ const AddReview = () => {
            rating: "",
            publishingYear: "",
            genre: "",
-          //    userEmail: user?.email || "",
+          //  userEmail: user?.email || "",
           //  userName: user?.displayName || "",
          }) 
         const genres = ["Action", "RPG", "Adventure", "Puzzle", "Sports"] 
@@ -61,7 +61,7 @@ const AddReview = () => {
             }
           })
           
-            // navigate("/reviews"); 
+        navigate("/reviews"); 
         } 
            catch (error) {
           //   toast.error("Failed to add the review. Try again.");

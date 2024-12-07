@@ -15,6 +15,9 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import UpdateReview from './components/UpdateReview.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
+import AllReviews from './components/AllReviews.jsx';
+import NotFound from './components/NotFound.jsx';
+import HighestRatedGames from './components/HighestRatedGames .jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,12 +40,21 @@ const router = createBrowserRouter([
         
       },
       {
+        path:"/reviews",
+        element:<AllReviews></AllReviews>
+      },
+      {
         path:"/my-reviews",
-        element:<MyReviews></MyReviews>
+        element:<MyReviews></MyReviews>,
+        loader: ()=> fetch('http://localhost:5000/users')
       },
       {
         path:"/watchlist",
         element:<GameWatchlist></GameWatchlist>
+      },
+      {
+        path:"/highest-rated-games",
+        element: <HighestRatedGames></HighestRatedGames>
       },
       {
         path:"/login",
@@ -52,6 +64,10 @@ const router = createBrowserRouter([
         path:"/register",
         element:<Register></Register>
       },
+      {
+        path: "*",
+        element:<NotFound></NotFound>
+      }
     ]
   },
 ])
