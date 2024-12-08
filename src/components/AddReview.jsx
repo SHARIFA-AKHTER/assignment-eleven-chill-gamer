@@ -16,7 +16,7 @@ const AddReview = () => {
            publishingYear: "",
            genre: "",
             userEmail: user?.email || "",
-            userName: user?.name || "Anonymous",
+            userName: user?.name || "displayName",
             
          }) 
        
@@ -191,7 +191,7 @@ const AddReview = () => {
           <label className="block text-gray-600 mb-2">Your Name</label>
           <input
             type="text"
-            value={formData.userName || "Anonymous"}
+            value={formData.userName || "displayName"}
             readOnly
             className="w-full px-4 py-2 border rounded-md "
              placeholder="Enter your name"
