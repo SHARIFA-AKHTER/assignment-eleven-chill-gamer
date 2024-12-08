@@ -1,7 +1,7 @@
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import Swal from "sweetalert2"; // Assuming SweetAlert2 is installed
+import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
 const Register = () => {

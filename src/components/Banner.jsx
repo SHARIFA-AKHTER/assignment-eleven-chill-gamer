@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3; // Number of slides
+  const totalSlides = 3; 
 
   // Auto-slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
-    }, 5000); // 5 seconds interval
+    }, 5000); 
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
+    return () => clearInterval(interval); 
   }, [totalSlides]);
 
   return (

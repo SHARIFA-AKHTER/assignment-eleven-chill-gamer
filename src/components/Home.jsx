@@ -3,8 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import ReviewDetails from './ReviewDetails';
 import Banner from './Banner';
 import HighestRatedGames from './HighestRatedGames ';
-import UpcomingGames from './UpcomingGames';
-import GamingLeaderboard from './GamingLeaderboard';
+
 
 
 
@@ -16,10 +15,9 @@ const Home = () => {
         <div className=''>
          <Banner></Banner>
          <HighestRatedGames></HighestRatedGames>
-         <UpcomingGames></UpcomingGames>
-         <GamingLeaderboard></GamingLeaderboard>
+        
             <h2 className='flex justify-center mx-auto my-20'>
-                {/* CHILL GAMER: {reviews.length} */}
+              {/* CHILL GAMER: {reviews.length}  */}
             </h2>
            <div className='grid md:grid-cols-2 gap-4'>
            {

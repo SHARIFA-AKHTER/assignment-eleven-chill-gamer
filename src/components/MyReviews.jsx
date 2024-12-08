@@ -3,15 +3,14 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const MyReviews = () => {
-  const loadedReviews = useLoaderData(); // Assuming the data is loaded via a loader
+  const loadedReviews = useLoaderData();
   const [reviews, setReviews] = useState(loadedReviews);
 
-  // Delete a review by ID
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this review?');
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:5000/reviews/${_id}`, {
+        const response = await fetch(`http://localhost:5000/reviews/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -19,7 +18,7 @@ const MyReviews = () => {
         });
 
         if (response.ok) {
-          setReviews(reviews.filter((review) => review._id !== id)); // Update state after deletion
+          setReviews(reviews.filter((review) => review._id !== id));
           toast.success('Review deleted successfully');
         } else {
           toast.error('Failed to delete review');
@@ -49,19 +48,21 @@ const MyReviews = () => {
           <tbody>
             {reviews.map((review) => (
               <tr key={review._id}>
-                <td className="border p-2">{review.gameTitle}</td>
-                <td className="border p-2">{review.rating}</td>
-                <td className="border p-2">{review.genre}</td>
+                <td className="border p-2">{review.gameTitle || 'N/A'}</td>
+                <td className="border p-2">{review.rating || 'N/A'}</td>
+                <td className="border p-2">{review.genre || 'N/A'}</td>
                 <td className="border p-2">
                   <Link
                     to={`/update-review/${review._id}`}
-                    className="mr-2 btn btn-primary bg-blue-500 text-white px-3 py-1 rounded"
+                    className="mr-2 btn btn-primary
+                     bg-blue-500 text-white px-3 py-1 rounded"
                   >
                     Update
                   </Link>
                   <button
                     onClick={() => handleDelete(review._id)}
-                    className="btn btn-danger bg-red-500 text-white px-3 py-1 rounded"
+                    className="btn btn-danger bg-red-500
+                     text-white px-3 py-1 rounded"
                   >
                     Delete
                   </button>
