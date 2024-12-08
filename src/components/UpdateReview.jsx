@@ -15,8 +15,8 @@ const UpdateReview = () => {
        rating: "",
        publishingYear: "",
        genre: "",
-      //    userEmail: user?.email || "",
-      //  userName: user?.displayName || "",
+         userEmail: user?.email || "",
+        userName: user?.displayName || "",
      }) 
     const genres = ["Action", "RPG", "Adventure", "Puzzle", "Sports"] 
 

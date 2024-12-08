@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home></Home>,
-        loader: () => fetch('http://localhost:5000/reviews')
+        loader: () =>fetch('http://localhost:5000/reviews')
       },
       {
         path:"/add-review",
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path:"/update-review/:id",
         element:<UpdateReview></UpdateReview>,
-        loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`),
+        loader: ({params}) =>fetch(`http://localhost:5000/reviews/${params.id}`),
         
       },
       {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path:"/my-reviews",
         element:<MyReviews></MyReviews>,
-        loader: ()=> fetch('http://localhost:5000/users')
+        loader: ()=>fetch('http://localhost:5000/users')
       },
       {
         path:"/watchlist",
