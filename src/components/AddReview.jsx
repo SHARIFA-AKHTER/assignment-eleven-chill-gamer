@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Swal from 'sweetalert2'
+import { AuthContext } from "../Providers/AuthProvider";
 
 const AddReview = () => {
-    //  const { user } = useContext(AuthContext);
+     const { user } = useContext(AuthContext);
      const navigate = useNavigate()
         const [formData, setFormData] = useState({
            gameCover: "",
@@ -14,9 +15,11 @@ const AddReview = () => {
            rating: "",
            publishingYear: "",
            genre: "",
-          //  userEmail: user?.email || "",
-          //  userName: user?.displayName || "",
+            userEmail: user?.email || "",
+            userName: user?.name || "Anonymous",
+            
          }) 
+       
         const genres = ["Action", "RPG", "Adventure", "Puzzle", "Sports"] 
         const handleChange = (e) => {
           const { name, value } = e.target;
@@ -64,7 +67,7 @@ const AddReview = () => {
         navigate("/reviews"); 
         } 
            catch (error) {
-          //   toast.error("Failed to add the review. Try again.");
+            toast.error("Failed to add the review. Try again.");
            }
     }
     
@@ -188,7 +191,7 @@ const AddReview = () => {
           <label className="block text-gray-600 mb-2">Your Name</label>
           <input
             type="text"
-            value={formData.userName}
+            value={formData.userName || "Anonymous"}
             readOnly
             className="w-full px-4 py-2 border rounded-md "
              placeholder="Enter your name"

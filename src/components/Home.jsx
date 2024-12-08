@@ -7,6 +7,7 @@ import UpcomingGames from './UpcomingGames';
 import GamingLeaderboard from './GamingLeaderboard';
 
 
+
 const Home = () => {
     const loadedReviews = useLoaderData();
     const [reviews,setReviews] =useState(loadedReviews);
@@ -17,7 +18,6 @@ const Home = () => {
          <HighestRatedGames></HighestRatedGames>
          <UpcomingGames></UpcomingGames>
          <GamingLeaderboard></GamingLeaderboard>
-  
             <h2 className='flex justify-center mx-auto my-20'>
                 {/* CHILL GAMER: {reviews.length} */}
             </h2>

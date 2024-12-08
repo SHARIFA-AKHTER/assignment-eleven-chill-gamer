@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +7,6 @@ const HighestRatedGames = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-       
         const response = await fetch('http://localhost:5000/reviews', {
           method: 'GET',
           headers: {
@@ -16,14 +14,14 @@ const HighestRatedGames = () => {
           },
         });
 
-        console.log('Response received:', response);
+        // console.log('Response received:', response);
         if (!response.ok) {
           throw new Error('Failed to fetch reviews');
         }
 
         const data = await response.json();
 
-        // Sort reviews by rating in descending order and take top 6
+        // Sort reviews by rating 
         const sortedReviews = data.sort((a, b) => b.rating - a.rating).slice(0, 6);
 
         setReviews(sortedReviews);
@@ -34,6 +32,19 @@ const HighestRatedGames = () => {
 
     fetchReviews();
   }, []);
+
+  const renderStars = (rating) => {
+    const totalStars = 10; 
+    let stars = [];
+    for (let i = 1; i <= totalStars; i++) {
+      stars.push(
+        <span key={i} className={i <= rating ? 'text-yellow-500' : 'text-gray-300'}>
+          ★
+        </span>
+      );
+    }
+    return stars;
+  };
 
   return (
     <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -50,16 +61,15 @@ const HighestRatedGames = () => {
             />
           </figure>
           <div className="p-4">
-            <h2 className="text-lg font-bold text-gray-800">
-              {review.gameTitle}
-            </h2>
+            <h2 className="text-lg font-bold text-gray-800">{review.gameTitle}</h2>
             <p className="text-sm text-gray-600 mt-2">
-              {review.description?.slice(0, 80)}Wow So Nice Game
+              {review.description?.slice(0, 80)}Wow So Nice Game {review.description?.length > 80 && "Read more"}
             </p>
             <div className="mt-4 space-y-1">
-              <span className="block text-sm text-gray-700">
-                <strong>Rating:</strong> {review.rating}/10
-              </span>
+              <div className="flex items-center space-x-1">
+                <strong className="text-sm text-gray-700">Rating:</strong>
+                <div className="flex">{renderStars(review.rating)}</div>
+              </div>
               <span className="block text-sm text-gray-700">
                 <strong>Genre:</strong> {review.genre}
               </span>
