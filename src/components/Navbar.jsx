@@ -1,5 +1,4 @@
 
-
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -73,7 +72,7 @@ const Navbar = () => {
             All Reviews
           </NavLink>
 
-          {/* Protected Routes */}
+          {/* Protected Links */}
           {user && (
             <>
               <NavLink
@@ -110,7 +109,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Authentication Links or User Avatar */}
+        {/* User Section */}
         <div className="flex items-center space-x-4">
           {!user ? (
             <>
@@ -135,20 +134,23 @@ const Navbar = () => {
                 alt={user.displayName || "User"}
                 className="w-10 h-10 rounded-full cursor-pointer"
               />
-              {/* Tooltip */}
-              <div
-                className="absolute hidden group-hover:block bg-white text-black text-sm px-4 py-2 rounded shadow-lg top-12 right-0"
-              >
+              {/* Dropdown */}
+              <div className="absolute hidden 
+              group-hover:block bg-white text-black gap-4
+               text-sm px-4 py-2 rounded shadow-lg top-12 right-0">
                 <span className="block font-semibold mb-2">
                   {user.displayName || "User"}
                 </span>
-                <button
+                {/* Log Out Button */}
+               
+              </div>
+              <button
                   onClick={handleLogOut}
-                  className="text-white bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+                  className="text-white bg-red-500 px-3 py-1 
+                  rounded hover:bg-red-600 ml-4"
                 >
                   Log Out
                 </button>
-              </div>
             </div>
           )}
         </div>
