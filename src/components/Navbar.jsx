@@ -144,7 +144,7 @@ const Navbar = () => {
                  text-sm px-4 py-2 rounded shadow-lg top-12
                   left-0 hidden group-hover:block"
               >
-                {user.displayName || "User"}
+              <span className="block font-semibold mb-2">{user.displayName || "User"}</span>
               </div>
               {/* Log Out Button */}
               <button
